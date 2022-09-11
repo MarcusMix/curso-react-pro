@@ -1,7 +1,11 @@
-const fs = require('fs');
+const {firstName, lastName, add} = require('./utils')
 
-// fs.writeFileSync('mensagem.txt', 'Essa é a nossa segunda mensagem escrita com o módulo fs!');
 
-// const af = require('af');
+const messages = require('./messages')
 
-fs.appendFileSync('mensagem.txt', '\nTeste de escrever mensagem em um documento já criado');
+const sum = add(4, 4);
+const message = messages.getMessages();
+
+console.log(firstName, lastName);
+console.log(sum);
+console.log(message);

@@ -1,2 +1,0 @@
-Essa é a nossa segunda mensagem escrita com o módulo fs!
-Teste de escrever mensagem em um documento já criado

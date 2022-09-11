@@ -1,0 +1,7 @@
+const fs = require('fs');
+
+// fs.writeFileSync('mensagem.txt', 'Essa é a nossa segunda mensagem escrita com o módulo fs!');
+
+// const af = require('af');
+
+fs.appendFileSync('mensagem.txt', '\nTeste de escrever mensagem em um documento já criado');

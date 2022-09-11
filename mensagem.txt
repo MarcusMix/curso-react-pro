@@ -1,0 +1,2 @@
+Essa é a nossa segunda mensagem escrita com o módulo fs!teste de escrever mensagem em um documento já criadoteste de escrever mensagem em um documento já criado
+ Limpandooo

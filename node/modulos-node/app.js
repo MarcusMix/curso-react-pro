@@ -1,11 +1,8 @@
-const {firstName, lastName, add} = require('./utils')
+const validator = require('validator');
 
+const email = 'johnosso@gol.com.br'
 
-const messages = require('./messages')
+const isEmailValid = validator.isEmail(email);
 
-const sum = add(4, 4);
-const message = messages.getMessages();
+console.log(isEmailValid)
 
-console.log(firstName, lastName);
-console.log(sum);
-console.log(message);

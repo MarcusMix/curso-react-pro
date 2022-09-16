@@ -1,3 +1,5 @@
+//Códigos executados durante as aulas do Curso React Pro
+
 const {firstName, lastName, add} = require('../exemplos-de-aulas/utils')
 
 
@@ -30,3 +32,13 @@ console.log(chalk.bold.green("Hello World!"))
 const oi = log(chalk.bold.white('Será que está funcionando?'))
 const erro = log(chalk.bold.red('Erro!!'))
 
+import chalk from 'chalk'
+
+console.log('Iniciando...')
+
+setTimeout(() => {
+    console.log('Demora 3 segundos para executar')
+    
+}, 3000);
+
+console.log(chalk.red('Finalizando...'))

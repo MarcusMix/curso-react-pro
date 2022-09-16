@@ -1,10 +1,11 @@
-import chalk from 'chalk'
 
-console.log('Iniciando...')
 
-setTimeout(() => {
-    console.log('Demora 3 segundos para executar')
-    
-}, 3000);
+const myPromise = new Promise((resolve, reject) => {
+    if(1 + 1 === 2) {
+        resolve("Sucesso");
+    }
+})
 
-console.log(chalk.red('Finalizando...'))
+myPromise.then((value) => {
+    console.log(value)
+}).catch((value) => console.log(value))

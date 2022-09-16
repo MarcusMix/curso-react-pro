@@ -15,4 +15,5 @@ const log = console.log;
 // log(chalk.blue('OI, sou um texto de cor verde!'))
 
 console.log(chalk.bold.green("Hello World!"))
-const oi = log(chalk.bold.bgWhite('valeu meu chapa'))
+const oi = log(chalk.bold.white('Será que está funcionando?'))
+const erro = log(chalk.bold.red('Erro!!'))

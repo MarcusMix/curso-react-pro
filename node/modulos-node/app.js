@@ -1,19 +1,8 @@
-import validator from 'validator';
-import chalk from 'chalk';
+console.log('Iniciando...')
 
-const email = 'johnosso@gol.com.br'
+setTimeout(() => {
+    console.log('Demora 3 segundos para executar')
+    
+}, 3000);
 
-const isEmailValid = validator.isEmail(email);
-
-console.log(isEmailValid)
-
-
-const log = console.log;
-
-// const letraColorida = 'OI, sou um texto de cor verde!'
-
-// log(chalk.blue('OI, sou um texto de cor verde!'))
-
-console.log(chalk.bold.green("Hello World!"))
-const oi = log(chalk.bold.white('Será que está funcionando?'))
-const erro = log(chalk.bold.red('Erro!!'))
+console.log('Finalizando...')

@@ -1,3 +1,5 @@
+import chalk from 'chalk'
+
 console.log('Iniciando...')
 
 setTimeout(() => {
@@ -5,4 +7,4 @@ setTimeout(() => {
     
 }, 3000);
 
-console.log('Finalizando...')
+console.log(chalk.red('Finalizando...'))

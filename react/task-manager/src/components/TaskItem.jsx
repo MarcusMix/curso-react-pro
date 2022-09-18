@@ -1,7 +1,16 @@
-import React from "react";
-
+import { useEffect } from "react";
 
 const TaskItem = ({tarefa}) => {
+
+    useEffect(() => {
+        console.log('components was mounted!')
+
+        return () => {
+            console.log('i will unmount!')
+        }
+
+    }, [])
+
     return (
         <>
             <h1>{tarefa.description}</h1>

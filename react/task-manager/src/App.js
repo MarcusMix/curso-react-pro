@@ -1,16 +1,25 @@
 import {useState} from 'react';
+import TaskItem from './components/TaskItem';
 
 const App = () => {
-  const [message, setMessage] = useState('hello world')
-
-  const handleChangeMessage = () => {
-    setMessage('olá mundo')
-  }
+  const [task, setTask] = useState([
+    {
+      id: '1',
+      description: 'Estudar programação',
+      isCompleted: false
+    },
+    {
+      id: '2',
+      description: 'Ler',
+      isCompleted: true
+    },
+  ]);
 
   return (
     <>
-      <h1>{message}</h1>
-      <button onClick={handleChangeMessage}>Change message</button>
+      {task.map(task => (
+        <TaskItem key={task.id} tarefa={task}/>
+      ))}
     </>
   );
 }

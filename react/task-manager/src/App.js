@@ -1,17 +1,9 @@
-import {useState, useRef, useEffect} from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+
 import TaskItem from './components/TaskItem';
 
 const App = () => {
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    if(mounted.current === false) {
-        mounted.current = true;
-    } else {
-        console.log('componentss was updated!')
-    }
-  })
-
   const [task, setTask] = useState([
     {
       id: '1',
@@ -24,17 +16,28 @@ const App = () => {
       isCompleted: true
     },
   ]);
+  
+  const fetchTask = async () => {
+    try {
+      const {data} = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
 
-  const handleCleanTask = () => {
-    setTask([])
+      setTask(data)
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    fetchTask()
+  }, [])
+
 
   return (
     <>
       {task.map(task => (
         <TaskItem key={task.id} tarefa={task}/>
       ))}
-      <button onClick={handleCleanTask}>Clean Tasks</button>
     </>
   );
 }

@@ -1,8 +1,8 @@
-const TaskItem = ({ tasks }) => {
+const TaskItem = ({ task }) => {
     return (
         <>
-            <h1>{tasks.description}</h1>
-            <p>{tasks.isCompleted ? 'Completa' : 'Pendente'}</p>
+            <h1>{task.description}</h1>
+            <p>{task.isCompleted ? 'Completa' : 'Pendente'}</p>
         </>
     )
 }

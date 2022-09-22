@@ -8,7 +8,7 @@ import CustomInput from './CustomInput'
 
 import './AddTask.scss'
 
-const AddTask = () => { 
+const AddTask = ({fetchTasks}) => { 
     const [task, setTask] = useState("")
 
     const alert = useAlert();
@@ -22,8 +22,18 @@ const AddTask = () => {
             if(task === '') {
                 return alert.error('A tarefe precisa de uma descrição!')
             }
-        } catch (error) {
 
+            await axios.post('https://localhost:8000/tasks', {
+                description: task,
+                isCompleted: false,
+            });
+
+            await fetchTasks()
+
+            setTask('')
+
+        } catch (error) {
+            alert.error('Algo deu errado!')
         }
     }
 

@@ -9,7 +9,7 @@ import AddTask from './AddTask'
 const Tasks = () => {
     const [tasks, setTask] = useState([]);
 
-    const fetchTask = async () => {
+    const fetchTasks = async () => {
         try {
             const { data } = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
 
@@ -21,7 +21,7 @@ const Tasks = () => {
     }
 
     useEffect(() => {
-        fetchTask()
+        fetchTasks()
     }, [])
     return (
         <div className="tasks-container">
@@ -29,7 +29,7 @@ const Tasks = () => {
             
             <div className="last-tasks">
             <h3>Últimas tarefas</h3>
-            <AddTask/>
+            <AddTask fetchTasks={fetchTasks} />
                 <div className="task-list">
                 {tasks
                     .filter(task => task.isCompleted === false)

@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { FaPlus} from 'react-icons/fa'
+import { FaPlus } from 'react-icons/fa'
 import axios from 'axios'
-import { useAlert }  from 'react-alert'
+import { useAlert } from 'react-alert'
 
 import CustomButton from './CustomButton'
 import CustomInput from './CustomInput'
 
 import './AddTask.scss'
 
-const AddTask = ({fetchTasks}) => { 
+const AddTask = ({ fetchTasks }) => {
     const [task, setTask] = useState("")
 
     const alert = useAlert();
@@ -19,11 +19,11 @@ const AddTask = ({fetchTasks}) => {
 
     const handleTaskAddition = async () => {
         try {
-            if(task === '') {
+            if (task === '') {
                 return alert.error('A tarefe precisa de uma descrição!')
             }
 
-            await axios.post('https://localhost:8000/tasks', {
+            await axios.post('https://fsc-task-manager-backend.herokuapp.com/tasks', {
                 description: task,
                 isCompleted: false,
             });
@@ -39,13 +39,13 @@ const AddTask = ({fetchTasks}) => {
 
     return (
         <div className="add-task-container">
-            <CustomInput 
-                label="Adicionar tarefa..." 
-                value={task} 
+            <CustomInput
+                label="Adicionar tarefa..."
+                value={task}
                 onChange={onChange}
             />
             <CustomButton onClick={handleTaskAddition}>
-                <FaPlus size={14} color="white"/>
+                <FaPlus size={14} color="white" />
             </CustomButton>
         </div>
     )

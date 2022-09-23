@@ -26,6 +26,7 @@ const Tasks = () => {
     useEffect(() => {
         fetchTasks()
     }, [])
+
     return (
         <div className="tasks-container">
             <h2>Minhas Tarefas</h2>
@@ -38,6 +39,7 @@ const Tasks = () => {
                     .filter(task => task.isCompleted === false)
                     .map((lastTask) => (
                     <TaskItem 
+                        key={lastTask._id}
                         task={lastTask} 
                         fetchTasks={fetchTasks}
                     />
@@ -52,6 +54,7 @@ const Tasks = () => {
                         .filter(task => task.isCompleted)
                         .map(completedTask => (
                             <TaskItem 
+                                key={completedTask._id}
                                 task={completedTask} 
                                 fetchTasks={fetchTasks}
                             /> 

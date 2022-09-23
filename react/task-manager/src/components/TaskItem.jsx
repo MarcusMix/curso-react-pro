@@ -16,7 +16,7 @@ const TaskItem = ({ task, fetchTasks }) => {
 
             alert.success('A tarefa foi removida com sucesso!')
 
-        } catch (error) {
+        } catch (_error) {
             alert.error('Algo deu errado!')
         }
     }
@@ -31,7 +31,7 @@ const TaskItem = ({ task, fetchTasks }) => {
 
             alert.success('A tarefa foi modificada com sucesso!')
 
-        } catch (error) {
+        } catch (_error) {
             alert.error('Algo deu errado!')
         }
     }

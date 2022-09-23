@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { useAlert } from "react-alert";
 
 import './Tasks.scss'
 
@@ -9,14 +10,16 @@ import AddTask from './AddTask'
 const Tasks = () => {
     const [tasks, setTask] = useState([]);
 
+    const alert = useAlert();
+
     const fetchTasks = async () => {
         try {
             const { data } = await axios.get("https://fsc-task-manager-backend.herokuapp.com/tasks")
 
             setTask(data)
             console.log(data)
-        } catch (error) {
-            console.log(error)
+        } catch (_error) {
+            alert.error('Não foi possível recuperar as tarefas')
         }
     }
 

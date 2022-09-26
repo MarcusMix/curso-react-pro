@@ -5,28 +5,26 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/images/logo.png'
 import './Sidebar.scss'
 
-
 const Sidebar = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
+  const handleSignOutClick = () => {
+    navigate('/login')
+  }
 
-    const handleSignOutClick = () => {
-        navigate('/login')
-    }
-
-    return (
+  return (
         <div className="sidebar-container">
-           <div className="logo">
+            <div className="logo">
                 <img src={logo} alt="logo" />
-           </div>
+            </div>
 
-           <div className="sign-out">
-                <CustomButton onClick={handleSignOutClick}> 
+            <div className="sign-out">
+                <CustomButton onClick={handleSignOutClick}>
                     Sair
                 </CustomButton>
-           </div>
+            </div>
         </div>
-    )
+  )
 }
 
 export default Sidebar

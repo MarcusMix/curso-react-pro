@@ -20,14 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-<<<<<<< HEAD
-    "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext .jsx .",
-    "husky:prepare": "husky install"
-=======
-    "eject": "react-scripts eject"
->>>>>>> parent of 992e46a (chore: add eslind and prettier)
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +39,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
   },
   "devDependencies": {
     "eslint": "^8.0.1",
@@ -58,7 +50,5 @@
     "eslint-plugin-react": "^7.31.8",
     "husky": "^8.0.1",
     "prettier-config-standard": "^5.0.0"
-=======
->>>>>>> parent of 992e46a (chore: add eslind and prettier)
   }
 }

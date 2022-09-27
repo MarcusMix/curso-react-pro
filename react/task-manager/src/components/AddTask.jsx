@@ -9,36 +9,37 @@ import CustomInput from './CustomInput'
 import './AddTask.scss'
 
 const AddTask = ({ fetchTasks }) => {
-  const [task, setTask] = useState('')
+    const [task, setTask] = useState("")
 
-  const alert = useAlert()
+    const alert = useAlert();
 
-  const onChange = (e) => {
-    setTask(e.target.value)
-  }
-
-  const handleTaskAddition = async () => {
-    try {
-      if (task === '') {
-        return alert.error('A tarefe precisa de uma descrição!')
-      }
-
-      await axios.post('https://fsc-task-manager-backend.herokuapp.com/tasks', {
-        description: task,
-        isCompleted: false
-      })
-
-      await fetchTasks()
-
-      setTask('')
-
-      await alert.success('A tarefa foi adicionada com sucesso!')
-    } catch (_error) {
-      alert.error('Algo deu errado!')
+    const onChange = (e) => {
+        setTask(e.target.value)
     }
-  }
 
-  return (
+    const handleTaskAddition = async () => {
+        try {
+            if (task === '') {
+                return alert.error('A tarefe precisa de uma descrição!')
+            }
+
+            await axios.post('https://fsc-task-manager-backend.herokuapp.com/tasks', {
+                description: task,
+                isCompleted: false,
+            });
+
+            await fetchTasks()
+
+            setTask('')
+
+            await alert.success('A tarefa foi adicionada com sucesso!')
+
+        } catch (_error) {
+            alert.error('Algo deu errado!')
+        }
+    }
+
+    return (
         <div className="add-task-container">
             <CustomInput
                 label="Adicionar tarefa..."
@@ -50,7 +51,8 @@ const AddTask = ({ fetchTasks }) => {
                 <FaPlus size={14} color="white" />
             </CustomButton>
         </div>
-  )
+    )
 }
 
-export default AddTask
+
+export default AddTask;

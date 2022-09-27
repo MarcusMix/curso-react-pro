@@ -4,16 +4,16 @@ import CustomButton from '../components/CustomButton'
 
 import './Login.scss'
 
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
-  const handleSignInClick = () => {
-    navigate('/')
-  }
+    const handleSignInClick = () => {
+        navigate('/')
+    }
 
-  return (
+    return (
         <div className="login-container">
             <img src={logo} alt="logo" />
 
@@ -23,7 +23,7 @@ const Login = () => {
                 </CustomButton>
             </div>
         </div>
-  )
+    )
 }
 
 export default Login

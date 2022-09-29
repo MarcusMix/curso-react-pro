@@ -1,0 +1,33 @@
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  p {
+    padding: 20px;
+    font-size: 40px;
+  }
+
+  button {
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(60, 223, 74, 0.671);
+    border-radius: 10px;
+
+   
+  }
+
+     
+  button:hover {
+    background-color: rgb(255, 127, 148);
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+ 
+}
+
+
+

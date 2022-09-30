@@ -1,34 +1,31 @@
 import './App.scss';
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 
-function init(initialCount) {
-  return {count: initialCount};
-}
+function App() {
+  const [resourseType, setResourseType] = useState('posts');
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
-    case 'reset':
-      return init(action.payload);
-    default:
-      throw new Error();
+  const changeResourceType = (resourseType) => {
+    setResourseType(resourseType)
   }
-}
 
-function App({initialCount}) {
-  const [state, dispatch] = useReducer(reducer, initialCount, init);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/${resourseType}`)
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
+  }, [resourseType])
+
   return (
     <>
-      Count: {state.count}
-      <button
-        onClick={() => dispatch({type: 'reset', payload: initialCount})}>
-        Reset
-      </button>
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+      <div>
+        <h1>{resourseType}</h1>
+        <div>
+          <button onClick={() => changeResourceType('posts')}>Posts</button>
+          <button onClick={() => changeResourceType('comments')}>Comments</button>
+          <button onClick={() => changeResourceType('todos')}>ToDos</button>
+        </div>
+      </div>
     </>
   );
 }

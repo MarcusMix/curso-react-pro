@@ -1,31 +1,34 @@
 import './App.scss';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 
-function App() {
-  const [resourseType, setResourseType] = useState('posts');
+function init(initialCount) {
+  return {count: initialCount};
+}
 
-  const changeResourceType = (resourseType) => {
-    setResourseType(resourseType)
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    case 'reset':
+      return init(action.payload);
+    default:
+      throw new Error();
   }
+}
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/${resourseType}`)
-    .then(response => response.json())
-    .then(json => console.log(json))
-
-
-  }, [resourseType])
-
+function App({initialCount}) {
+  const [state, dispatch] = useReducer(reducer, initialCount, init);
   return (
     <>
-      <div>
-        <h1>{resourseType}</h1>
-        <div>
-          <button onClick={() => changeResourceType('posts')}>Posts</button>
-          <button onClick={() => changeResourceType('comments')}>Comments</button>
-          <button onClick={() => changeResourceType('todos')}>ToDos</button>
-        </div>
-      </div>
+      Count: {state.count}
+      <button
+        onClick={() => dispatch({type: 'reset', payload: initialCount})}>
+        Reset
+      </button>
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }

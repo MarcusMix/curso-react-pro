@@ -23,7 +23,7 @@ function App() {
         <div>
           <button onClick={() => changeResourceType('posts')}>Posts</button>
           <button onClick={() => changeResourceType('comments')}>Comments</button>
-          <button onClick={() => changeResourceType('todos')}>ToDos</button>
+          <button onClick={() => changeResourceType('todos')}>To-Dos</button>
         </div>
       </div>
     </>

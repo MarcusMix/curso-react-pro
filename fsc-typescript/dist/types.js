@@ -1,5 +1,6 @@
 "use strict";
 // tipos básicos
+Object.defineProperty(exports, "__esModule", { value: true });
 let num = 10.2;
 const course = 'Marcus';
 const isPublished = true;

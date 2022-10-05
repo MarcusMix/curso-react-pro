@@ -123,3 +123,5 @@ interface Woman {
 // }
 
 type Person = Man & Woman;
+
+export {}

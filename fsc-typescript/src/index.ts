@@ -3,3 +3,6 @@ let id: number;
 id = 9;
 console.log(id)
 console.log('hello world')
+
+
+export {}

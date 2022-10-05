@@ -66,3 +66,4 @@ const printMessege = (message: string) => {
     console.log(message)
 }
 
+export {}

@@ -5,3 +5,5 @@ const user = {
   }
    
   console.log(user.name)
+
+  export {}

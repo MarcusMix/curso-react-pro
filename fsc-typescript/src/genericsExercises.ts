@@ -45,4 +45,6 @@ const sum = async (x: number, y: number): Promise<number> => {
     return x + y;
 }
 
-console.log(sum(2, 9))
+console.log(sum(2, 9)) 
+
+

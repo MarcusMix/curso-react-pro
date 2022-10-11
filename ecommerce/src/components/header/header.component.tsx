@@ -5,7 +5,7 @@ import './header.styles.css'
 const Header = () => {
     return (
         <div className="header-container">
-            <h2 className="header-title">E-commerce</h2>
+            <h2 className="header-title">Marcus Store</h2>
             <div className="header-items">
                 <div className="header-item">Explorar</div>
                 <div className="header-item">Login</div>

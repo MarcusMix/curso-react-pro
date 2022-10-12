@@ -15,14 +15,16 @@ const Categories = () => {
         try {
             const { data } = await axios.get(`${env.apiUrl}/api/category`)
 
-            console.log({ data })
+            // console.log({ data })
+
+            setCategories(data)
 
         } catch (error) {
             console.log({ error })
         }
     }
 
-    // console.log({ categories })
+    console.log({ categories })
 
     useEffect(() => {
         fetchCategories()

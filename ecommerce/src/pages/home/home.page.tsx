@@ -7,9 +7,7 @@ const HomePage = () => {
     return (
         <div>
             <Header />
-
             <Categories />
-
         </div>
     )
 }

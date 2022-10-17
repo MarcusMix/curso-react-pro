@@ -7,13 +7,14 @@ const Header = () => {
     return (
         <HeaderContainer>
             <HeaderTitle>Marcus Store</HeaderTitle>
+
             <HeaderItems>
-                <HeaderItems>Explorar</HeaderItems>
-                <HeaderItems>Login</HeaderItems>
-                <HeaderItems>Criar Conta</HeaderItems>
-                <HeaderItems>
+                <HeaderItem>Explorar</HeaderItem>
+                <HeaderItem>Login</HeaderItem>
+                <HeaderItem>Criar Conta</HeaderItem>
+                <HeaderItem>
                     <BsCart3 size={25} />
-                </HeaderItems>
+                </HeaderItem>
             </HeaderItems>
         </HeaderContainer>
     )

@@ -33,4 +33,3 @@ export const HeaderItem = styled.div`
         margin-right: 40px;
     }
 `
-// exports default 

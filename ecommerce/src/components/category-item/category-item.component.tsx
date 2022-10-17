@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 
 //Ultilities
 import Category from "../../types/category.types"
-import { CategoryItemContainer, CategoryName } from './category-item'
+import { CategoryItemContainer, CategoryName } from './category-item.styles'
 
 //Styles
 import './category-item.style.css'

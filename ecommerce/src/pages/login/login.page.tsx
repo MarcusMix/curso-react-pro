@@ -12,13 +12,18 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 //Styles
 import { LoginContainer, LoginHeadline, LoginInputContainer, LoginSubtitle, LoginContent } from "./login.styles"
 
+interface LoginForm {
+    email: string;
+    password: string;
+}
+
 const LoginPage = () => {
 
     const {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm()
+    } = useForm<LoginForm>()
 
     const handleSubmitPress = (data: any) => {
         console.log({ data })

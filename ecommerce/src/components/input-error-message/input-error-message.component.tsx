@@ -3,7 +3,11 @@ import { FunctionComponent } from 'react'
 // Styles
 import { InputErrorMessageContainer } from './input-error-message.styles'
 
-const InputErrorMessage: FunctionComponent = ({ children }) => {
+interface Children {
+    children: string
+}
+
+const InputErrorMessage: FunctionComponent<Children> = ({ children }) => {
     return <InputErrorMessageContainer>{children}</InputErrorMessageContainer>
 }
 

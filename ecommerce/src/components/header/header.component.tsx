@@ -15,9 +15,13 @@ const Header = () => {
         navigate('/sign-up')
     }
 
+    const handlePagePrincipal = () => {
+        navigate('/')
+    }
+
     return (
         <HeaderContainer>
-            <HeaderTitle>Marcus Store</HeaderTitle>
+            <HeaderTitle onClick={handlePagePrincipal}>Marcus Store</HeaderTitle>
 
             <HeaderItems>
                 <HeaderItem>Explorar</HeaderItem>

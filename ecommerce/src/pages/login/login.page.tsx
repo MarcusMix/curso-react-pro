@@ -4,18 +4,21 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import { useEffect, useContext } from 'react'
 
 //Components
 import CustomButton from "../../components/custom-button/custom-button.component"
 import CustomInput from '../../components/custom-input/custom-input.component'
 import Header from "../../components/header/header.component"
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+import { useNavigate } from 'react-router-dom'
 
 //Styles
 import { LoginContainer, LoginHeadline, LoginInputContainer, LoginSubtitle, LoginContent } from "./login.styles"
 
 // Ultilities
 import { auth, db, googleProvider } from '../../config/firebase.config'
+import { UserContext } from '../../contexts/user.context'
 
 interface LoginForm {
     email: string;
@@ -30,6 +33,16 @@ const LoginPage = () => {
         handleSubmit,
         setError
     } = useForm<LoginForm>()
+
+    const { isAuthenticated } = useContext(UserContext)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/')
+        }
+    }, [isAuthenticated])
 
     const handleSubmitPress = async (data: LoginForm) => {
         try {

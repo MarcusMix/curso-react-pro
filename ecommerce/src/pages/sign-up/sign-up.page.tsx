@@ -44,7 +44,8 @@ const SignUpPage = () => {
                 id: userCrendentials.user.uid,
                 email: userCrendentials.user.email,
                 firstName: data.firstName,
-                lastName: data.lastName
+                lastName: data.lastName,
+                provide: 'firebase'
             })
         } catch (error) {
             console.log(error)

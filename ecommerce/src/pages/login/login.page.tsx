@@ -2,8 +2,8 @@ import { BsGoogle } from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
-import { AuthError, AuthErrorCodes, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../config/firebase.config'
+import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 
 //Components
 import CustomButton from "../../components/custom-button/custom-button.component"
@@ -13,6 +13,9 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 
 //Styles
 import { LoginContainer, LoginHeadline, LoginInputContainer, LoginSubtitle, LoginContent } from "./login.styles"
+
+// Ultilities
+import { auth, db, googleProvider } from '../../config/firebase.config'
 
 interface LoginForm {
     email: string;
@@ -45,6 +48,31 @@ const LoginPage = () => {
         }
     }
 
+    const handleSignInWithGoogleProvider = async () => {
+        try {
+            const userCrendentials = await signInWithPopup(auth, googleProvider)
+
+            const querySnapshot = await getDocs(query(collection(db, 'users'), where('id', '==', userCrendentials.user.uid)))
+
+            const user = querySnapshot.docs[0]?.data()
+
+            if (!user) {
+                const firstName = userCrendentials.user.displayName?.split(' ')[0]
+                const lastName = userCrendentials.user.displayName?.split(' ')[1]
+
+                await addDoc(collection(db, 'users'), {
+                    id: userCrendentials.user.uid,
+                    email: userCrendentials.user.email,
+                    firstName,
+                    lastName,
+                    provide: 'google'
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <>
             <Header />
@@ -53,7 +81,10 @@ const LoginPage = () => {
 
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
 
-                    <CustomButton startIcon={<BsGoogle size={18} />}>Entrar com o Google</CustomButton>
+                    <CustomButton startIcon={<BsGoogle size={18} />}
+                        onClick={handleSignInWithGoogleProvider}
+                    >Entrar com o Google
+                    </CustomButton>
 
                     <LoginSubtitle>ou entre com seu e-mail</LoginSubtitle>
 

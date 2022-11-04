@@ -10,7 +10,7 @@ export const categoryConverter = {
         snapshot: QueryDocumentSnapshot,
         options: SnapshotOptions
     ): Category {
-        const data = snapshot.data(options);
+        const data = snapshot.data(options)
 
         return {
             id: data.id,
@@ -20,7 +20,6 @@ export const categoryConverter = {
             products: data.products
         }
     }
-
 }
 
 export const userConverter = {
@@ -31,7 +30,7 @@ export const userConverter = {
         snapshot: QueryDocumentSnapshot,
         options: SnapshotOptions
     ): User {
-        const data = snapshot.data(options);
+        const data = snapshot.data(options)
 
         return {
             id: data.id,
@@ -41,5 +40,4 @@ export const userConverter = {
             provider: data.provider
         }
     }
-
 }

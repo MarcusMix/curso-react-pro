@@ -38,14 +38,14 @@ const Header = () => {
                         <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
                         <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
                     </>
-                )
+                )}
 
-                }
                 {isAuthenticated && (
-                    <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
-                )
+                    <>
+                        <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
+                    </>
+                )}
 
-                }
                 <HeaderItem>
                     <BsCart3 size={25} />
                 </HeaderItem>

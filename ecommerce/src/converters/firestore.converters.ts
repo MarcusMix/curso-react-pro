@@ -37,7 +37,7 @@ export const userConverter = {
             email: data.email,
             firstName: data.firstName,
             lastName: data.lastName,
-            provider: data.provider
+            provide: data.provide
         }
     }
 }

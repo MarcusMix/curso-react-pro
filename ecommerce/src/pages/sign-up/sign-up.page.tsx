@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 //Components
@@ -18,6 +18,7 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 //Ultilities
 import { auth, db } from '../../config/firebase.config'
 import { UserContext } from '../../contexts/user.context'
+import Loading from '../../components/loading/loading.components'
 
 interface SignUpForm {
     firstName: string;
@@ -36,6 +37,8 @@ const SignUpPage = () => {
         watch,
     } = useForm<SignUpForm>()
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const watchPassword = watch('password')
 
     const { isAuthenticated } = useContext(UserContext)
@@ -50,6 +53,7 @@ const SignUpPage = () => {
 
     const handleSubmitPress = async (data: SignUpForm) => {
         try {
+            setIsLoading(true)
             const userCrendentials = await createUserWithEmailAndPassword(auth, data.email, data.password)
 
 
@@ -62,6 +66,8 @@ const SignUpPage = () => {
             })
         } catch (error) {
             console.log(error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -69,6 +75,7 @@ const SignUpPage = () => {
     return (
         <>
             <Header />
+            {isLoading && <Loading />}
             <SignUpContainer>
                 <SignUpContent>
                     <SignUpHeadline>Crie sua conta</SignUpHeadline>

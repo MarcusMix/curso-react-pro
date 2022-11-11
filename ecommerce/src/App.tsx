@@ -7,12 +7,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/home/home.page'
 import LoginPage from './pages/login/login.page'
 import SignUpPage from './pages/sign-up/sign-up.page'
+import Loading from './components/loading/loading.components'
 
 //Ultilities
 import { UserContext } from './contexts/user.context'
 import { auth, db } from './config/firebase.config'
 import { userConverter } from './converters/firestore.converters'
-import Loading from './components/loading/loading.components'
+import ExplorePage from './pages/explore/explore.page'
 
 const App: FunctionComponent = () => {
 
@@ -51,6 +52,7 @@ const App: FunctionComponent = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/explore" element={<ExplorePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
       </Routes>

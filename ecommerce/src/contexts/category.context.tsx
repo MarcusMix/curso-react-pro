@@ -5,14 +5,14 @@ import { categoryConverter } from "../converters/firestore.converters";
 import Category from "../types/category.types";
 
 interface ICategoryContext {
-    category: Category[]
+    categories: Category[]
     isLoading: boolean
     fetchCategories: () => Promise<void>
 }
 
 export const CategoryContext = createContext<ICategoryContext>({
     isLoading: false,
-    category: [],
+    categories: [],
     fetchCategories: () => Promise.resolve()
 })
 

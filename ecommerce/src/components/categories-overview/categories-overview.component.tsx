@@ -1,6 +1,11 @@
+// Ultilities
 import { FunctionComponent, useContext, useEffect } from "react";
 import { CategoryContext } from "../../contexts/category.context";
+
+// Styles
 import { Container } from "./categories-overview.styles";
+
+//Components
 import CategoryOverview from "../category-overview/category-overview.component";
 import Loading from "../loading/loading.components";
 

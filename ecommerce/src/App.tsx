@@ -14,6 +14,8 @@ import { UserContext } from './contexts/user.context'
 import { auth, db } from './config/firebase.config'
 import { userConverter } from './converters/firestore.converters'
 import ExplorePage from './pages/explore/explore.page'
+import CategoryDetails from './components/category-details/category-details.component'
+import CategoryDetailsPage from './pages/category-details/category-details.page'
 
 const App: FunctionComponent = () => {
 
@@ -53,6 +55,7 @@ const App: FunctionComponent = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
+        <Route path='/category/:id' element={<CategoryDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
       </Routes>

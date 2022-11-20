@@ -9,9 +9,11 @@ import { HeaderContainer, HeaderItems, HeaderItem, HeaderTitle } from './header.
 //Ultilities
 import { UserContext } from '../../contexts/user.context'
 import { auth } from '../../config/firebase.config'
+import { CartContext } from '../../contexts/cart.context'
 
 const Header = () => {
     const { isAuthenticated } = useContext(UserContext)
+    const { toggleCart } = useContext(CartContext)
 
     const navigate = useNavigate()
 
@@ -50,7 +52,7 @@ const Header = () => {
                     </>
                 )}
 
-                <HeaderItem>
+                <HeaderItem onClick={toggleCart}>
                     <BsCart3 size={25} />
                 </HeaderItem>
             </HeaderItems>

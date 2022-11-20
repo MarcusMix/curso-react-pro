@@ -8,13 +8,13 @@ interface ICartContext {
     toggleCart: () => void;
 }
 
-const CartContext = createContext<ICartContext>({
+export const CartContext = createContext<ICartContext>({
     isVisible: false,
     products: [],
     toggleCart: () => { }
 })
 
-const CartContextProvider: FunctionComponent = ({ children }) => {
+ const CartContextProvider: FunctionComponent = ({ children }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [products, setProducts] = useState<CartProduct[]>([])
 

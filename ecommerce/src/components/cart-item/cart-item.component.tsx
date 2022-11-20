@@ -1,38 +1,45 @@
-import { FunctionComponent } from "react";
-import {AiOutlinePlus, AiOutlineMinus, AiOutlineClose} from 'react-icons/ai'
+import { FunctionComponent, useContext } from "react";
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai'
+import { CartContext } from "../../contexts/cart.context";
 
 // Ultilities
 import CartProduct from "../../types/cart.types";
 
 // Styles
-import {CartItemContainer, CartItemInfo, CartItemImage, CartItemQuantity, RemoveButton} from './cart-item.styles'
+import { CartItemContainer, CartItemInfo, CartItemImage, CartItemQuantity, RemoveButton } from './cart-item.styles'
 
 
 interface CartItemProps {
   product: CartProduct
 }
 
-const CartItem: FunctionComponent<CartItemProps> = ({product}) => {
-    return (
-        <CartItemContainer>
-          <CartItemImage imageUrl={product.imageUrl}/>
+const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
+  const { removeProductFromCart } = useContext(CartContext)
 
-          <CartItemInfo>
-            <p>{product.name}</p>
-            <p>R${product.price}</p>
+  const handleRemoveClick = () => {
+    removeProductFromCart(product.id)
+  }
 
-            <CartItemQuantity>
-              <AiOutlineMinus size={20}/>
-              <p>{product.quantity}</p>
-              <AiOutlinePlus size={20}/>
-            </CartItemQuantity>
-          </CartItemInfo>
+  return (
+    <CartItemContainer>
+      <CartItemImage imageUrl={product.imageUrl} />
 
-          <RemoveButton>
-            <AiOutlineClose size={25}/>
-          </RemoveButton>
-        </CartItemContainer>
-    )
+      <CartItemInfo>
+        <p>{product.name}</p>
+        <p>R${product.price}</p>
+
+        <CartItemQuantity>
+          <AiOutlineMinus size={20} />
+          <p>{product.quantity}</p>
+          <AiOutlinePlus size={20} />
+        </CartItemQuantity>
+      </CartItemInfo>
+
+      <RemoveButton onClick={handleRemoveClick}>
+        <AiOutlineClose size={25} />
+      </RemoveButton>
+    </CartItemContainer>
+  )
 }
 
 export default CartItem

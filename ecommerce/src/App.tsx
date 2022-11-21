@@ -14,10 +14,11 @@ import { UserContext } from './contexts/user.context'
 import { auth, db } from './config/firebase.config'
 import { userConverter } from './converters/firestore.converters'
 import ExplorePage from './pages/explore/explore.page'
-import CategoryDetails from './components/category-details/category-details.component'
 import CategoryDetailsPage from './pages/category-details/category-details.page'
 import Cart from './components/cart/cart.component'
 import CheckoutPage from './pages/checkout/checkout.page'
+import AuthenticationGuard from './components/guards/authentication.guard'
+
 
 const App: FunctionComponent = () => {
 
@@ -60,7 +61,12 @@ const App: FunctionComponent = () => {
         <Route path='/category/:id' element={<CategoryDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
-        <Route path='/checkout' element={<CheckoutPage />}/>
+        <Route path='/checkout' element={
+          <AuthenticationGuard>
+            <CheckoutPage />
+          </AuthenticationGuard>
+        }
+        />
       </Routes>
 
       <Cart />

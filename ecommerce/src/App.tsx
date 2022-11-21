@@ -17,6 +17,7 @@ import ExplorePage from './pages/explore/explore.page'
 import CategoryDetails from './components/category-details/category-details.component'
 import CategoryDetailsPage from './pages/category-details/category-details.page'
 import Cart from './components/cart/cart.component'
+import CheckoutPage from './pages/checkout/checkout.page'
 
 const App: FunctionComponent = () => {
 
@@ -59,9 +60,10 @@ const App: FunctionComponent = () => {
         <Route path='/category/:id' element={<CategoryDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
+        <Route path='/checkout' element={<CheckoutPage />}/>
       </Routes>
 
-      <Cart/>
+      <Cart />
     </BrowserRouter>
   )
 }

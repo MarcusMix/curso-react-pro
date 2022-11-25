@@ -59,14 +59,16 @@ const App: FunctionComponent = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path='/category/:id' element={<CategoryDetailsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path='/sign-up' element={<SignUpPage />} />
-        <Route path='/checkout' element={
-          <AuthenticationGuard>
-            <CheckoutPage />
-          </AuthenticationGuard>
-        }
+        <Route 
+          path='/checkout' 
+          element={
+            <AuthenticationGuard>
+              <CheckoutPage />
+            </AuthenticationGuard>
+          }
         />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path='/sign-up' element={<SignUpPage />} />
       </Routes>
 
       <Cart />

@@ -6,7 +6,7 @@ interface LoadingProps {
     message?: string;
 }
 
-const Loading: FunctionComponent = ({ message }) => {
+const Loading: FunctionComponent<LoadingProps> = ({ message }) => {
     return (
         <LoadingContainer>
             {message && <p>{message}</p>}

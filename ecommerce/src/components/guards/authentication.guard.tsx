@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext, useEffect } from "react";
+import { FunctionComponent, ReactNode, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -9,9 +9,12 @@ import Loading from "../loading/loading.components";
 // Ultilities
 import { UserContext } from "../../contexts/user.context";
 
+interface IChildren {
+    children: ReactNode
+}
 
 
-const AuthenticationGuard: FunctionComponent = ({ children }) => {
+const AuthenticationGuard: FunctionComponent<IChildren> = ({ children }) => {
     const { isAuthenticated } = useContext(UserContext)
 
     const navigate = useNavigate()
@@ -22,7 +25,7 @@ const AuthenticationGuard: FunctionComponent = ({ children }) => {
                 navigate('/login')
             }, 3000)
         }
-    }, [])
+    }, [isAuthenticated])
 
     if (!isAuthenticated) {
         return <>

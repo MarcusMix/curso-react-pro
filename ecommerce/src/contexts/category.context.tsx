@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { createContext, FunctionComponent, useState } from "react";
+import { createContext, FunctionComponent, ReactNode, useState } from "react";
 import { db } from "../config/firebase.config";
 import { categoryConverter } from "../converters/firestore.converters";
 import Category from "../types/category.types";
@@ -10,13 +10,17 @@ interface ICategoryContext {
     fetchCategories: () => Promise<void>
 }
 
+interface IChildren {
+    children: ReactNode
+}
+
 export const CategoryContext = createContext<ICategoryContext>({
     isLoading: false,
     categories: [],
     fetchCategories: () => Promise.resolve()
 })
 
-const CategoryContextProvider: FunctionComponent = ({ children }) => {
+const CategoryContextProvider: FunctionComponent<IChildren> = ({ children }) => {
     const [categories, setCategories] = useState<Category[]>([])
     const [isLoading, setIsLoading] = useState(false)
 
@@ -37,7 +41,7 @@ const CategoryContextProvider: FunctionComponent = ({ children }) => {
         } catch (error) {
             console.log({ error })
         }
-        finally{
+        finally {
             setIsLoading(false)
         }
     }

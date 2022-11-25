@@ -1,4 +1,4 @@
-import { createContext, useState, FunctionComponent } from 'react'
+import { createContext, useState, FunctionComponent, ReactNode } from 'react'
 import User from '../types/user.types'
 
 interface IUserContext {
@@ -8,9 +8,9 @@ interface IUserContext {
     logoutUser: () => void
 }
 
-// interface Children {
-//     children: string
-// }
+interface IChildren {
+    children: ReactNode
+}
 
 export const UserContext = createContext<IUserContext>({
     currentUser: null,
@@ -21,7 +21,7 @@ export const UserContext = createContext<IUserContext>({
 
 
 
-const UserContextProvider: FunctionComponent = ({ children }) => {
+const UserContextProvider: FunctionComponent<IChildren> = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState<User | null>(null)
 

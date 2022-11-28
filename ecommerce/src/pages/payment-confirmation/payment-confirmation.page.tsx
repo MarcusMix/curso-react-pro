@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext } from "react"
+import { FunctionComponent, useContext, useEffect } from "react"
 import { Navigate, useNavigate, useSearchParams } from "react-router-dom"
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineHome } from 'react-icons/ai'
 

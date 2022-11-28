@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
-import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 //Components
@@ -17,8 +16,11 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 
 //Ultilities
 import { auth, db } from '../../config/firebase.config'
-import { UserContext } from '../../contexts/user.context'
 import Loading from '../../components/loading/loading.components'
+import { useSelector } from 'react-redux'
+import rootReducer from '../../store/root-reducer'
+import userReducer from '../../store/reducers/user.reducer'
+import { useEffect, useState } from 'react'
 
 interface SignUpForm {
     firstName: string;
@@ -41,7 +43,7 @@ const SignUpPage = () => {
 
     const watchPassword = watch('password')
 
-    const { isAuthenticated } = useContext(UserContext)
+    const { isAuthenticated } = useSelector((rootReducer: any) => rootReducer.userReducer)
 
     const navigate = useNavigate()
 

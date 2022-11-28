@@ -7,7 +7,8 @@ import Header from "../header/header.component";
 import Loading from "../loading/loading.components";
 
 // Ultilities
-import { UserContext } from "../../contexts/user.context";
+import { useSelector } from "react-redux";
+import rootReducer from "../../store/root-reducer";
 
 interface IChildren {
     children: ReactNode
@@ -15,7 +16,7 @@ interface IChildren {
 
 
 const AuthenticationGuard: FunctionComponent<IChildren> = ({ children }) => {
-    const { isAuthenticated } = useContext(UserContext)
+    const { isAuthenticated } = useSelector((rootReducer: any) => rootReducer.userReducer)
 
     const navigate = useNavigate()
 

@@ -1,4 +1,5 @@
-import { createContext, useState, FunctionComponent, ReactNode } from 'react'
+import { createContext, FunctionComponent, ReactNode, useState } from 'react'
+
 import User from '../types/user.types'
 
 interface IUserContext {
@@ -19,13 +20,10 @@ export const UserContext = createContext<IUserContext>({
     logoutUser: () => { }
 })
 
-
-
 const UserContextProvider: FunctionComponent<IChildren> = ({ children }) => {
-
     const [currentUser, setCurrentUser] = useState<User | null>(null)
 
-    const isAuthenticated = currentUser !== null ? false : true
+    const isAuthenticated = currentUser !== null
 
     const loginUser = (user: User) => {
         setCurrentUser(user)
@@ -36,7 +34,8 @@ const UserContextProvider: FunctionComponent<IChildren> = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ currentUser, isAuthenticated, loginUser, logoutUser }}>
+        <UserContext.Provider
+            value={{ currentUser, isAuthenticated, loginUser, logoutUser }}>
             {children}
         </UserContext.Provider>
     )

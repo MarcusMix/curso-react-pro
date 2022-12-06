@@ -19,6 +19,7 @@ import PaymentConfirmationPage from './pages/payment-confirmation/payment-confir
 import { auth, db } from './config/firebase.config'
 import { userConverter } from './converters/firestore.converters'
 import AuthenticationGuard from './components/guards/authentication.guard'
+import { loginUser, logout } from './store/reducers/user/user.actions'
 
 
 const App: FunctionComponent = () => {
@@ -27,33 +28,33 @@ const App: FunctionComponent = () => {
 
   const dispatch = useDispatch()
 
-  const {isAuthenticated} = useSelector((rootReducer: any) => rootReducer.userReducer)
+  const { isAuthenticated } = useSelector((rootReducer: any) => rootReducer.userReducer)
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       const isSigningOut = isAuthenticated && !user
-  
+
       if (isSigningOut) {
-        dispatch({ type: 'LOGOUT_USER' })
-  
+        dispatch(logout())
+
         return setInitializing(false)
       }
-  
+
       const isSigningIn = !isAuthenticated && user
-  
+
       if (isSigningIn) {
         const querySnapshot = await getDocs(
           query(collection(db, 'users').withConverter(userConverter), where('id', '==', user.uid))
         )
-  
+
         const userFromFirestore = querySnapshot.docs[0]?.data()
-  
-  
-        dispatch({ type: 'LOGIN_USER', payload: userFromFirestore })
-  
+
+
+        dispatch(loginUser(userFromFirestore))
+
         return setInitializing(false)
       }
-  
+
       return setInitializing(false)
     })
   }, [dispatch])

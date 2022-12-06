@@ -19,7 +19,7 @@ import { auth, db } from '../../config/firebase.config'
 import Loading from '../../components/loading/loading.components'
 import { useSelector } from 'react-redux'
 import rootReducer from '../../store/root-reducer'
-import userReducer from '../../store/reducers/user.reducer'
+import userReducer from '../../store/reducers/user/user.reducer'
 import { useEffect, useState } from 'react'
 
 interface SignUpForm {

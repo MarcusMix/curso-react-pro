@@ -11,11 +11,11 @@ import { CartContext } from '../../contexts/cart.context'
 import { useDispatch } from 'react-redux'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase.config'
-import { logout } from '../../store/reducers/user/user.actions'
+import { logoutUser } from '../../store/reducers/user/user.actions'
 
 const Header = () => {
-    
-const {isAuthenticated} = useSelector((rootReducer: any) => rootReducer.userReducer)
+
+    const { isAuthenticated } = useSelector((rootReducer: any) => rootReducer.userReducer)
 
     const { toggleCart, productsCount } = useContext(CartContext)
 
@@ -41,7 +41,7 @@ const {isAuthenticated} = useSelector((rootReducer: any) => rootReducer.userRedu
     }
 
     const handleSignOutClick = () => {
-        dispatch(logout())
+        dispatch(logoutUser())
         signOut(auth)
     }
     return (

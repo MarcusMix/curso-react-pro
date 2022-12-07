@@ -17,10 +17,8 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 //Ultilities
 import { auth, db } from '../../config/firebase.config'
 import Loading from '../../components/loading/loading.components'
-import { useSelector } from 'react-redux'
-import rootReducer from '../../store/root-reducer'
-import userReducer from '../../store/reducers/user/user.reducer'
 import { useEffect, useState } from 'react'
+import { useAppSelector } from '../../components/hooks/redux.hooks'
 
 interface SignUpForm {
     firstName: string;
@@ -43,7 +41,7 @@ const SignUpPage = () => {
 
     const watchPassword = watch('password')
 
-    const { isAuthenticated } = useSelector((rootReducer: any) => rootReducer.userReducer)
+    const { isAuthenticated } = useAppSelector((rootReducer) => rootReducer.userReducer)
 
     const navigate = useNavigate()
 

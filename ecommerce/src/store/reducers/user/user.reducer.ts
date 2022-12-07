@@ -1,27 +1,34 @@
-import User from "../../../types/user.types";
-import UserActionTypes from "./user.action-types";
+import User from '../../../types/user.types'
+import UserActionTypes from './user.action-types'
+import { UserActions } from './user.actions'
 
-interface initialState {
-    currenntUser: User | null
+interface InitialState {
+    currentUser: User | null
     isAuthenticated: boolean
 }
 
-const initialState: initialState = {
-    currenntUser: null,
+const initialState: InitialState = {
+    currentUser: null,
     isAuthenticated: false
 }
 
-const userReducer = (state = initialState, action: any) => {
+const userReducer = (
+    state = initialState,
+    action: UserActions
+): InitialState => {
     switch (action.type) {
-        case UserActionTypes.LOGIN: {
+        case UserActionTypes.LOGIN:
             return { ...state, currentUser: action.payload, isAuthenticated: true }
-        }
-        case UserActionTypes.LOGOUT: {
-            return { ...state, currentUser: null, isAuthenticated: false }
-        }
-        default: {
-            return { ...state }
-        }
+        case UserActionTypes.LOGOUT:
+            return {
+                ...state,
+                currentUser: null,
+                isAuthenticated: false
+            }
+        default:
+            return {
+                ...state
+            }
     }
 }
 

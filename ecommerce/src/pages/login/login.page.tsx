@@ -5,7 +5,6 @@ import validator from 'validator'
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { useEffect, useContext, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 //Components
@@ -20,6 +19,7 @@ import { LoginContainer, LoginHeadline, LoginInputContainer, LoginSubtitle, Logi
 
 // Ultilities
 import { auth, db, googleProvider } from '../../config/firebase.config'
+import { useAppSelector } from '../../components/hooks/redux.hooks'
 
 interface LoginForm {
     email: string;
@@ -37,7 +37,7 @@ const LoginPage = () => {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const {isAuthenticated} = useSelector((rootReducer: any) => rootReducer.userReducer)
+    const { isAuthenticated } = useAppSelector((rootReducer) => rootReducer.userReducer)
 
     const navigate = useNavigate()
 

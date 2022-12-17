@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+//@ts-ignore
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { store, persistedStore } from './store/store';
 import CategoryContextProvider from './contexts/category.context';
-import CartContextProvider from './contexts/cart.context';
-import store from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,11 +16,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CategoryContextProvider>
-        <CartContextProvider>
+      <PersistGate persistor={persistedStore}>
+        <CategoryContextProvider>
           <App />
-        </CartContextProvider>
-      </CategoryContextProvider>
+        </CategoryContextProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

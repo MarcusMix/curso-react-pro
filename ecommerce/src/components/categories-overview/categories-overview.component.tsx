@@ -1,19 +1,21 @@
-// Ultilities
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 // Styles
-import { Container } from "./categories-overview.styles";
+import { Container } from './categories-overview.styles'
 
-//Components
-import CategoryOverview from "../category-overview/category-overview.component";
-import Loading from "../loading/loading.components";
-import { useAppSelector } from "../hooks/redux.hooks";
-import { useDispatch } from "react-redux";
-import { fetchCategories } from "../../store/reducers/category/category.actions";
+// Utilities
+import { fetchCategories } from '../../store/reducers/category/category.actions'
+import { useAppSelector } from '../../hooks/redux.hooks'
+
+// Components
+import CategoryOverview from '../category-overview/category-overview.component'
+import Loading from '../loading/loading.components'
 
 const CategoriesOverview: FunctionComponent = () => {
-
-    const { isLoading, categories } = useAppSelector(state => state.categoryReducer)
+    const { categories, isLoading } = useAppSelector(
+        (state) => state.categoryReducer
+    )
 
     const dispatch = useDispatch()
 
@@ -26,9 +28,10 @@ const CategoriesOverview: FunctionComponent = () => {
     if (isLoading) return <Loading />
 
     return (
-
         <Container>
-            {categories.map(category => <CategoryOverview key={category.id} category={category} />)}
+            {categories.map((category) => (
+                <CategoryOverview key={category.id} category={category} />
+            ))}
         </Container>
     )
 }

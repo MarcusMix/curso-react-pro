@@ -6,7 +6,7 @@ import { fetchCategories } from '../../store/reducers/category/category.actions'
 
 //Components
 import CategoryItem from '../category-item/category-item.component'
-import { useAppSelector } from '../hooks/redux.hooks'
+import { useAppSelector } from '../../hooks/redux.hooks'
 import Loading from '../loading/loading.components'
 
 //Styles

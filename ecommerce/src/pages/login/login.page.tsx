@@ -19,7 +19,7 @@ import { LoginContainer, LoginHeadline, LoginInputContainer, LoginSubtitle, Logi
 
 // Ultilities
 import { auth, db, googleProvider } from '../../config/firebase.config'
-import { useAppSelector } from '../../components/hooks/redux.hooks'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 interface LoginForm {
     email: string;

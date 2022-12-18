@@ -18,7 +18,7 @@ import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } 
 import { auth, db } from '../../config/firebase.config'
 import Loading from '../../components/loading/loading.components'
 import { useEffect, useState } from 'react'
-import { useAppSelector } from '../../components/hooks/redux.hooks'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 interface SignUpForm {
     firstName: string;

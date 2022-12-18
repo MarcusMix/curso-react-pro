@@ -1,7 +1,7 @@
 import axios from "axios"
 import { FunctionComponent, useState } from "react"
 import { BsBagCheck } from 'react-icons/bs'
-import { useAppSelector } from "../hooks/redux.hooks"
+import { useAppSelector } from "../../hooks/redux.hooks"
 import { selectProductsTotalPrice } from "../../store/reducers/cart/cart.selector"
 
 

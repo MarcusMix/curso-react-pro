@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { BsCartCheck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../hooks/redux.hooks";
+import { useAppSelector } from "../../hooks/redux.hooks";
 
 // Ultilities
 import { toggleCart } from "../../store/reducers/cart/cart.actions";

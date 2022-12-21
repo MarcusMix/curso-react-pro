@@ -13,7 +13,7 @@ import Header from "../../components/header/header.component"
 //Ultilities
 import Colors from "../../themes/themes.colors"
 import { useDispatch } from "react-redux"
-import { clearCartProducts } from "../../store/reducers/cart/cart.actions"
+import { clearCartProducts } from "../../store/toolkit/cart/cart.slice"
 
 const PaymentConfirmationPage: FunctionComponent = () => {
 
@@ -61,8 +61,6 @@ const PaymentConfirmationPage: FunctionComponent = () => {
                 </PaymentConfirmationContent>
             </PaymentConfirmationContainer>
         </>
-
-
     )
 }
 

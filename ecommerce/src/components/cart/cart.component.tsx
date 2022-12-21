@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../hooks/redux.hooks";
 
 // Ultilities
-import { toggleCart } from "../../store/reducers/cart/cart.actions";
+import { toggleCart } from "../../store/toolkit/cart/cart.slice";
 
 // Components
 import CustomButton from "../custom-button/custom-button.component";

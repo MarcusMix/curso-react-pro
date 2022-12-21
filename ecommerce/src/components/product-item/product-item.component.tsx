@@ -1,4 +1,4 @@
-import { FunctionComponent} from "react";
+import { FunctionComponent } from "react";
 import { BsCartPlus } from 'react-icons/bs'
 import { useDispatch } from "react-redux";
 
@@ -10,7 +10,7 @@ import { ProductContainer, ProductImage, ProductInfo } from "./product-item.styl
 
 //Ultilities
 import Product from "../../types/product.types";
-import { addProductToCart } from "../../store/reducers/cart/cart.actions";
+import { addProductToCart } from "../../store/toolkit/cart/cart.slice";
 
 interface ProductItemProps {
     product: Product

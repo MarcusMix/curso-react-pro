@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext } from "react";
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai'
 import { useDispatch } from "react-redux";
-import { decreaseCartProductQuantity, increaseCartProductQuantity, removeProductFromCart } from "../../store/reducers/cart/cart.actions";
+import { decreaseCartProductQuantity, increaseCartProductQuantity, removeProductFromCart } from "../../store/toolkit/cart/cart.slice";
 
 // Ultilities
 import CartProduct from "../../types/cart.types";

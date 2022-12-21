@@ -8,11 +8,14 @@ import { Container } from './categories-overview.styles'
 import { fetchCategories } from '../../store/reducers/category/category.actions'
 import { useAppSelector } from '../../hooks/redux.hooks'
 
+
 // Components
 import CategoryOverview from '../category-overview/category-overview.component'
 import Loading from '../loading/loading.components'
 
 const CategoriesOverview: FunctionComponent = () => {
+
+
     const { categories, isLoading } = useAppSelector(
         (state) => state.categoryReducer
     )

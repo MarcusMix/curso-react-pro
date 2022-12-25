@@ -25,7 +25,6 @@ const Categories = () => {
         dispatch(fetchCategories() as any)
     }, [])
 
-
     return (
         <CategoriesContainer>
             {isLoading && <Loading />}

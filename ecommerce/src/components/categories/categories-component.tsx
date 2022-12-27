@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 //Ultilities
-import { fetchCategories } from '../../store/reducers/category/category.actions'
+import { fetchCategories } from '../../store/toolkit/category/category.slice'
 
 //Components
 import CategoryItem from '../category-item/category-item.component'
@@ -11,7 +11,6 @@ import Loading from '../loading/loading.components'
 
 //Styles
 import { CategoriesContainer, CategoriesContent } from './categories-styles'
-import { CategoryContext } from '../../contexts/category.context'
 
 
 const Categories = () => {
